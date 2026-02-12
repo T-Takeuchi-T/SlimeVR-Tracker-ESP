@@ -191,7 +191,22 @@ def build_boards(
 schema_obj = _load_json("./board-defaults.schema.json")
 defaults_obj = _load_json("./board-defaults.json")
 slime_board = env.GetProjectOption("custom_slime_board", None)
+
 if slime_board:
+    # Check for IMU override in build flags
+    imu_override = None
+    build_flags = env.get("BUILD_FLAGS", [])
+    for flag in build_flags:
+        if isinstance(flag, str) and flag.startswith("-DIMU="):
+            imu_override = flag[6:].strip()
+
+    if imu_override and slime_board in defaults_obj['defaults']:
+        print(f">>> Found IMU override: {imu_override}")
+        board_def = defaults_obj['defaults'][slime_board]
+        sensors = board_def.get("values", {}).get("SENSORS", [])
+        for sensor in sensors:
+            sensor["imu"] = imu_override
+
     if 'SLIMEVR_OVERRIDE_DEFAULTS' in os.environ and slime_board in defaults_obj['defaults']:
         print(">>> OVERIDING BOARD DEFAULTS ", os.environ['SLIMEVR_OVERRIDE_DEFAULTS'])
         defaults_obj['defaults'][slime_board]['values'] = json.loads(os.environ['SLIMEVR_OVERRIDE_DEFAULTS'])
