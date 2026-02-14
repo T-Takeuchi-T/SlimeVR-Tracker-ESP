@@ -38,7 +38,7 @@ void Sensor::setAcceleration(Vector3 a) {
 }
 
 void Sensor::setFusedRotation(Quat r) {
-	fusedRotation = r * sensorOffset;
+	fusedRotation = r;
 	bool changed = OPTIMIZE_UPDATES
 					 ? !lastFusedRotationSent.equalsWithEpsilon(fusedRotation)
 					 : true;
