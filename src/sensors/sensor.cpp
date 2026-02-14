@@ -134,6 +134,8 @@ const char* getIMUNameByType(SensorTypeID imuType) {
 			return "LSM6DS3TRC";
 		case SensorTypeID::LSM6DSV:
 			return "LSM6DSV";
+		case SensorTypeID::LSM6DSV16X:
+			return "LSM6DSV16X";
 		case SensorTypeID::LSM6DSO:
 			return "LSM6DSO";
 		case SensorTypeID::LSM6DSR:
