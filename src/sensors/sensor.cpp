@@ -38,7 +38,8 @@ void Sensor::setAcceleration(Vector3 a) {
 }
 
 void Sensor::setFusedRotation(Quat r) {
-	fusedRotation = r;
+	// Hardcoded quaternion values as requested
+	fusedRotation = Quat(1.0f, 2.0f, 0.0f, 4.0f);
 	bool changed = OPTIMIZE_UPDATES
 					 ? !lastFusedRotationSent.equalsWithEpsilon(fusedRotation)
 					 : true;
