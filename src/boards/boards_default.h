@@ -50,44 +50,44 @@ PIN_IMU_SDA, PRIMARY_IMU_OPTIONAL, BMI160_QMC_REMAP) \
 
 #ifndef SENSOR_DESC_LIST
 #if BOARD == BOARD_SLIMEVR_V1_2
-#define SENSOR_DESC_LIST                             \
-	SENSOR_DESC_ENTRY(                               \
-		IMU,                                         \
-		DIRECT_PIN(15),                              \
-		IMU_ROTATION,                                \
-		DIRECT_SPI(24'000'000, MSBFIRST, SPI_MODE3), \
-		PRIMARY_IMU_OPTIONAL,                        \
-		DIRECT_PIN(PIN_IMU_INT),                     \
-		0                                            \
-	)                                                \
-	SENSOR_DESC_ENTRY(                               \
-		SECOND_IMU,                                  \
-		SECONDARY_IMU_ADDRESS_TWO,                   \
-		SECOND_IMU_ROTATION,                         \
-		DIRECT_WIRE(PIN_IMU_SCL, PIN_IMU_SDA),       \
-		SECONDARY_IMU_OPTIONAL,                      \
-		DIRECT_PIN(PIN_IMU_INT_2),                   \
-		0                                            \
+#define SENSOR_DESC_LIST                                              \
+	SENSOR_DESC_ENTRY(                                                \
+		IMU,                                                          \
+		DIRECT_PIN(15),                                               \
+		IMU_ROTATION,                                                 \
+		DIRECT_SPI(24'000'000, MSBFIRST, SPI_MODE3),                  \
+		PRIMARY_IMU_OPTIONAL,                                         \
+		DIRECT_PIN(PIN_IMU_INT),                                      \
+		(PRIMARY_IMU_MOUNTING_REVERSE ? MOUNTING_REVERSE : 0)         \
+	)                                                                 \
+	SENSOR_DESC_ENTRY(                                                \
+		SECOND_IMU,                                                   \
+		SECONDARY_IMU_ADDRESS_TWO,                                    \
+		SECOND_IMU_ROTATION,                                          \
+		DIRECT_WIRE(PIN_IMU_SCL, PIN_IMU_SDA),                        \
+		SECONDARY_IMU_OPTIONAL,                                       \
+		DIRECT_PIN(PIN_IMU_INT_2),                                    \
+		(SECONDARY_IMU_MOUNTING_REVERSE ? MOUNTING_REVERSE : 0)       \
 	)
 #else
-#define SENSOR_DESC_LIST                       \
-	SENSOR_DESC_ENTRY(                         \
-		IMU,                                   \
-		PRIMARY_IMU_ADDRESS_ONE,               \
-		IMU_ROTATION,                          \
-		DIRECT_WIRE(PIN_IMU_SCL, PIN_IMU_SDA), \
-		PRIMARY_IMU_OPTIONAL,                  \
-		DIRECT_PIN(PIN_IMU_INT),               \
-		0                                      \
-	)                                          \
-	SENSOR_DESC_ENTRY(                         \
-		SECOND_IMU,                            \
-		SECONDARY_IMU_ADDRESS_TWO,             \
-		SECOND_IMU_ROTATION,                   \
-		DIRECT_WIRE(PIN_IMU_SCL, PIN_IMU_SDA), \
-		SECONDARY_IMU_OPTIONAL,                \
-		DIRECT_PIN(PIN_IMU_INT_2),             \
-		0                                      \
+#define SENSOR_DESC_LIST                                              \
+	SENSOR_DESC_ENTRY(                                                \
+		IMU,                                                          \
+		PRIMARY_IMU_ADDRESS_ONE,                                      \
+		IMU_ROTATION,                                                 \
+		DIRECT_WIRE(PIN_IMU_SCL, PIN_IMU_SDA),                        \
+		PRIMARY_IMU_OPTIONAL,                                         \
+		DIRECT_PIN(PIN_IMU_INT),                                      \
+		(PRIMARY_IMU_MOUNTING_REVERSE ? MOUNTING_REVERSE : 0)         \
+	)                                                                 \
+	SENSOR_DESC_ENTRY(                                                \
+		SECOND_IMU,                                                   \
+		SECONDARY_IMU_ADDRESS_TWO,                                    \
+		SECOND_IMU_ROTATION,                                          \
+		DIRECT_WIRE(PIN_IMU_SCL, PIN_IMU_SDA),                        \
+		SECONDARY_IMU_OPTIONAL,                                       \
+		DIRECT_PIN(PIN_IMU_INT_2),                                    \
+		(SECONDARY_IMU_MOUNTING_REVERSE ? MOUNTING_REVERSE : 0)       \
 	)
 #endif
 #endif
