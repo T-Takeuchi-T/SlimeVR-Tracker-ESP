@@ -160,7 +160,7 @@ public:
 		float rotation,
 		SlimeVR::SensorInterface* sensorInterface = nullptr,
 		PinInterface* intPin = nullptr,
-		uint8_t = 0
+		int extraParam = 0
 	)
 		: Sensor(
 			SensorType::Name,
@@ -176,7 +176,11 @@ public:
 			  SensorType::AccTs,
 			  SensorType::MagTs
 		  )
-		, m_sensor(registerInterface, m_Logger) {}
+		, m_sensor(registerInterface, m_Logger) {
+		if (extraParam & MOUNTING_REVERSE) {
+			sensorOffset = Quat(Vector3(0, 1, 0), PI) * sensorOffset;
+		}
+	}
 	~SoftFusionSensor() override = default;
 
 	void checkSensorTimeout() {

@@ -43,7 +43,7 @@ public:
 		float rotation,
 		SlimeVR::SensorInterface* sensorInterface,
 		PinInterface* intPin,
-		int
+		int extraParam
 	)
 		: Sensor(
 			"BNO080Sensor",
@@ -53,7 +53,11 @@ public:
 			rotation,
 			sensorInterface
 		)
-		, m_IntPin(intPin){};
+		, m_IntPin(intPin) {
+		if (extraParam & MOUNTING_REVERSE) {
+			sensorOffset = Quat(Vector3(0, 1, 0), PI) * sensorOffset;
+		}
+	};
 	~BNO080Sensor(){};
 	void motionSetup() override final;
 	void postSetup() override { lastData = millis(); }
@@ -82,10 +86,14 @@ protected:
 		float rotation,
 		SlimeVR::SensorInterface* sensorInterface,
 		PinInterface* intPin,
-		int
+		int extraParam
 	)
 		: Sensor(sensorName, imuId, id, registerInterface, rotation, sensorInterface)
-		, m_IntPin(intPin){};
+		, m_IntPin(intPin) {
+		if (extraParam & MOUNTING_REVERSE) {
+			sensorOffset = Quat(Vector3(0, 1, 0), PI) * sensorOffset;
+		}
+	};
 
 private:
 	BNO080 imu{};
