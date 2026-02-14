@@ -55,7 +55,7 @@ public:
 		)
 		, m_IntPin(intPin) {
 		if (extraParam & MOUNTING_REVERSE) {
-			sensorOffset = Quat(Vector3(0, 1, 0), PI) * sensorOffset;
+			sensorOffset = Quat(Vector3(1, 0, 0), PI) * sensorOffset;
 		}
 	};
 	~BNO080Sensor(){};
