@@ -43,7 +43,7 @@ public:
 		float rotation,
 		SlimeVR::SensorInterface* sensorInterface,
 		PinInterface* intPin,
-		int extraParam
+		uint8_t extraParam
 	)
 		: Sensor(
 			"BNO080Sensor",
@@ -86,7 +86,7 @@ protected:
 		float rotation,
 		SlimeVR::SensorInterface* sensorInterface,
 		PinInterface* intPin,
-		int extraParam
+		uint8_t extraParam
 	)
 		: Sensor(sensorName, imuId, id, registerInterface, rotation, sensorInterface)
 		, m_IntPin(intPin) {

@@ -160,7 +160,7 @@ public:
 		float rotation,
 		SlimeVR::SensorInterface* sensorInterface = nullptr,
 		PinInterface* intPin = nullptr,
-		int extraParam = 0
+		uint8_t extraParam = 0
 	)
 		: Sensor(
 			SensorType::Name,
