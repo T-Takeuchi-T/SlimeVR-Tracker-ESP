@@ -41,6 +41,7 @@ enum class SensorTypeID : uint8_t {
 	BMI270,
 	LSM6DS3TRC,
 	LSM6DSV,
+	LSM6DSV16X,
 	LSM6DSO,
 	LSM6DSR,
 	ICM45686,
@@ -64,6 +65,7 @@ enum class SensorTypeID : uint8_t {
 #define IMU_BMI270 SoftFusionBMI270
 #define IMU_LSM6DS3TRC SoftFusionLSM6DS3TRC
 #define IMU_LSM6DSV SoftFusionLSM6DSV
+#define IMU_LSM6DSV16X SoftFusionLSM6DSV16X
 #define IMU_LSM6DSO SoftFusionLSM6DSO
 #define IMU_LSM6DSR SoftFusionLSM6DSR
 #define IMU_MPU6050_SF SoftFusionMPU6050

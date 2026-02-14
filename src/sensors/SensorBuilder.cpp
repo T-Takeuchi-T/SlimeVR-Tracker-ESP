@@ -103,6 +103,8 @@ SensorBuilder::buildSensorDynamically(SensorTypeID type, SensorDefinition sensor
 		//	);
 		case SensorTypeID::LSM6DSV:
 			return buildSensor<SoftFusionLSM6DSV>(sensorDef);
+		case SensorTypeID::LSM6DSV16X:
+			return buildSensor<SoftFusionLSM6DSV16X>(sensorDef);
 		case SensorTypeID::LSM6DSO:
 			return buildSensor<SoftFusionLSM6DSO>(sensorDef);
 		case SensorTypeID::LSM6DSR:
