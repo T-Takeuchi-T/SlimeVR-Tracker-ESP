@@ -49,6 +49,13 @@
 #define SECONDARY_IMU_OPTIONAL true
 #endif
 
+#ifndef PRIMARY_IMU_MOUNTING_REVERSE
+#define PRIMARY_IMU_MOUNTING_REVERSE false
+#endif
+#ifndef SECONDARY_IMU_MOUNTING_REVERSE
+#define SECONDARY_IMU_MOUNTING_REVERSE false
+#endif
+
 // Set I2C address here or directly in IMU_DESC_ENTRY for each IMU used
 // If not set, default address is used based on the IMU and Sensor ID
 // #define PRIMARY_IMU_ADDRESS_ONE 0x4a

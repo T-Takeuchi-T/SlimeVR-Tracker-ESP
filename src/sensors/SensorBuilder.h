@@ -108,7 +108,7 @@ private:
 		SensorInterface* sensorInterface;
 		bool optional;
 		PinInterface* intPin;
-		int extraParam;
+		uint8_t extraParam;
 	};
 
 public:
@@ -234,7 +234,7 @@ public:
 		SensorInterface* sensorInterface,
 		bool optional = false,
 		PinInterface* intPin = nullptr,
-		int extraParam = 0
+		uint8_t extraParam = 0
 	) {
 		std::unique_ptr<::Sensor> sensor;
 		if constexpr (std::is_same<SensorType, SensorAuto>::value) {

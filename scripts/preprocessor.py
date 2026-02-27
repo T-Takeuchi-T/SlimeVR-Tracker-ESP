@@ -115,7 +115,7 @@ def _build_board_flags(defaults: dict, board_name: str) -> List[str]:
                     f"DIRECT_WIRE({format_value(sensor.get('scl'), 'pin')}, {format_value(sensor.get('sda'), 'pin')})",
                     'false' if index == 0 else 'true',
                     f"DIRECT_PIN({format_value(sensor.get('int', 255), 'pin')})",
-                    '0'
+                    format_value(1 if sensor.get('reversed', False) else 0, 'number')
                 ]
                 sensor_list.append(f"SENSOR_DESC_ENTRY({','.join(params)})")
                 add('PIN_IMU_SDA', sensor.get('sda'), 'pin')
@@ -129,7 +129,7 @@ def _build_board_flags(defaults: dict, board_name: str) -> List[str]:
                     "DIRECT_SPI(24'000'000, MSBFIRST, SPI_MODE3)",
                     'false' if index == 0 else 'true',
                     f"DIRECT_PIN({format_value(sensor.get('int', 255), 'pin')})",
-                    '0'
+                    format_value(1 if sensor.get('reversed', False) else 0, 'number')
                 ]
                 sensor_list.append(f"SENSOR_DESC_ENTRY({','.join(params)})")
 
